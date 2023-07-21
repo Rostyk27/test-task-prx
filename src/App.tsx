@@ -1,8 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import HomePage from './pages/home';
+import PostPage from './pages/post';
+import AlbumPage from './pages/album';
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <div className="container">
-      <h1 className="mb-4 text-4xl font-bold text-blue-800">Hello test!</h1>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts/:postId" element={<PostPage />} />
+          <Route path="/albums/:albumId" element={<AlbumPage />} />
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 }
 

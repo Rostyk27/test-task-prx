@@ -10,11 +10,42 @@
       'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #fafafa;
   }
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold text-teal-900;
+  }
+
+  h1 {
+    @apply py-10 text-4xl;
+  }
+
+  h2 {
+    @apply mb-1 text-2xl;
+  }
+
+  h3 {
+    @apply mb-1 text-lg;
+  }
+
+  ol {
+    @apply list-inside list-decimal;
+  }
+
+  a:not(.button) {
+    @apply text-teal-700 transition-all hover:underline;
+  }
+
+  .content p {
+    @apply mb-6;
   }
 }
 
@@ -26,5 +57,9 @@
     @screen lg {
       max-width: calc(100% - 144px);
     }
+  }
+
+  .button {
+    @apply inline-block rounded-md bg-teal-600 px-4 py-2 text-white shadow-md transition-all hover:bg-teal-700 hover:text-white;
   }
 }
