@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
@@ -23,19 +24,25 @@ const AlbumPage = () => {
   }
 
   return (
-    <div className="container">
-      <div className="max-w-3xl">
-        {album ? (
-          <h1 className="first-letter:capitalize">{album.title}</h1>
-        ) : (
-          <p className="pt-10">Album not found.</p>
-        )}
+    <>
+      <Helmet>
+        <title>{album?.title} - Test App</title>
+      </Helmet>
 
-        <Link to="/" className="button">
-          Back home
-        </Link>
+      <div className="container">
+        <div className="max-w-3xl">
+          {album ? (
+            <h1 className="first-letter:capitalize">{album.title}</h1>
+          ) : (
+            <p className="pt-10">Album not found.</p>
+          )}
+
+          <Link to="/" className="button">
+            Back home
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

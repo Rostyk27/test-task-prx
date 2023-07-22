@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
@@ -23,22 +24,28 @@ const PostPage = () => {
   }
 
   return (
-    <div className="container">
-      <div className="max-w-3xl">
-        {post ? (
-          <div className="content">
-            <h1 className="first-letter:capitalize">{post.title}</h1>
-            <p>{post.body}</p>
-          </div>
-        ) : (
-          <p className="pt-10">Post not found.</p>
-        )}
+    <>
+      <Helmet>
+        <title>{post?.title} - Test App</title>
+      </Helmet>
 
-        <Link to="/" className="button">
-          Back home
-        </Link>
+      <div className="container">
+        <div className="max-w-3xl">
+          {post ? (
+            <div className="content">
+              <h1 className="first-letter:capitalize">{post.title}</h1>
+              <p>{post.body}</p>
+            </div>
+          ) : (
+            <p className="pt-10">Post not found.</p>
+          )}
+
+          <Link to="/" className="button">
+            Back home
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
